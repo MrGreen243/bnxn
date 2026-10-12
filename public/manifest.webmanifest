@@ -1,0 +1,24 @@
+{
+  "name": "Street Tycoon — Lagos Hustler Empire",
+  "short_name": "Street Tycoon",
+  "description": "A Nigerian 2D idle RPG and hustler empire simulator. Offline-first, no account needed.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0d12",
+  "theme_color": "#11141c",
+  "lang": "en",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    { "name": "Ad dashboard", "short_name": "Ads", "url": "/admin/ads/", "description": "Edit local ad campaigns" }
+  ]
+}
