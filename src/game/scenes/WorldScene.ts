@@ -253,8 +253,8 @@ export class WorldScene extends Phaser.Scene {
         const def = CREW_MEMBER_MAP[m.defId];
         if (!def) return;
         const key = ensureCharacterTexture(this, def.palette.skin, def.palette.hair, def.palette.outfit);
-        const cx = (5 + (i % 4) * 3) * TILE + 12;
-        const cy = (3 + Math.floor(i / 4) * 4) * TILE + 30;
+        const cx = (4 + (i % 4) * 3) * TILE + 16;
+        const cy = (2 + Math.floor(i / 4) * 4) * TILE + 34;
         const sprite = this.physics.add.sprite(cx, cy, key, 0).setImmovable(true);
         sprite.anims.play(`${key}_idle_up`);
         sprite.setDepth(cy + 24);
@@ -264,7 +264,6 @@ export class WorldScene extends Phaser.Scene {
       });
     }
 
-    this.cameras.main.setBounds(0, 0, built.width * TILE, built.height * TILE);
     this.cameras.main.startFollow(this.player, true, 0.15, 0.15);
     this.cameras.main.setRoundPixels(true);
     this.applyZoom();
@@ -281,6 +280,20 @@ export class WorldScene extends Phaser.Scene {
     const base = game?.settings.pixelScale ?? 3;
     const zoom = w < 480 ? Math.max(2, base - 0.5) : base;
     this.cameras.main.setZoom(zoom);
+    this.fitCameraBounds();
+  }
+
+  /** Small maps (interiors) are centred instead of pinned to the top-left corner. */
+  private fitCameraBounds() {
+    if (!this.built) return;
+    const cam = this.cameras.main;
+    const mapW = this.built.width * TILE;
+    const mapH = this.built.height * TILE;
+    const viewW = this.scale.width / cam.zoom;
+    const viewH = this.scale.height / cam.zoom;
+    const x = mapW < viewW ? -(viewW - mapW) / 2 : 0;
+    const y = mapH < viewH ? -(viewH - mapH) / 2 : 0;
+    cam.setBounds(x, y, Math.max(mapW, viewW), Math.max(mapH, viewH));
   }
 
   private decorateBillboard(img: Phaser.GameObjects.Image, x: number, y: number, districtId: string) {

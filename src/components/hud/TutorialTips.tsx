@@ -5,7 +5,7 @@ import { useGameStore } from "@/store/gameStore";
 import type { GameState } from "@/types/game";
 
 const TIPS: { id: string; when: (g: GameState) => boolean; text: string }[] = [
-  { id: "move", when: () => true, text: "Welcome to Mainland Corner. Move with WASD/arrows or the joystick. Tunde is waiting outside your room — walk up to him and press E." },
+  { id: "move", when: () => true, text: "Welcome to Mainland Corner. Move with WASD/arrows or the joystick. Tunde is waiting outside your room — walk up to him and press E (or tap the hand button)." },
   { id: "jobs", when: (g) => g.quests.flags.intro_done === true, text: "Jobs are on buildings (bakery, café) and in the Jobs screen. Rewards lock in at start and pay when done — you can queue several." },
   { id: "energy", when: (g) => g.player.energy < 30, text: "Low energy. Buy food at the bakery, eat at home, or rest. Energy also regenerates slowly on its own." },
   { id: "upgrade", when: (g) => g.player.cash >= 45_000 && (g.inventory.items.phone_2 ?? 0) === 0, text: "You can afford a Budget Android at the Fix-It kiosk. Better phones and computers unlock more work and multiply rewards." },

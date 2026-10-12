@@ -16,11 +16,11 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export function Button({ variant = "secondary", size = "md", icon, className, children, ...rest }: ButtonProps) {
   const base = "inline-flex items-center justify-center gap-1.5 rounded-md font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-45 select-none";
   const variants = {
-    primary: "bg-gold-500 text-ink-950 hover:bg-gold-400 active:bg-gold-300",
+    primary: "bg-gold-500 text-ink-950 hover:bg-gold-400 active:bg-gold-300 [&_.text-naira]:text-ink-950",
     secondary: "bg-ink-700 text-ink-100 border border-ink-500 hover:bg-ink-600",
     ghost: "bg-transparent text-ink-200 hover:bg-ink-700",
     danger: "bg-danger-dim text-ink-100 border border-danger hover:bg-danger",
-    success: "bg-growth-dim text-ink-100 border border-growth hover:bg-growth hover:text-ink-950",
+    success: "bg-growth-dim text-ink-100 border border-growth hover:bg-growth hover:text-ink-950 hover:[&_.text-naira]:text-ink-950",
   };
   const sizes = { sm: "px-2.5 py-1.5 text-xs", md: "px-3.5 py-2 text-sm", lg: "px-5 py-3 text-base" };
   return (
