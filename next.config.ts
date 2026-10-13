@@ -9,11 +9,13 @@ import type { NextConfig } from "next";
  * all respect it.
  */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") || "";
+/** Optional: serve hashed chunks from a different prefix (hosts that reserve "_" paths). */
+const assetPrefix = process.env.NEXT_PUBLIC_ASSET_PREFIX?.replace(/\/$/, "") || basePath || undefined;
 
 const nextConfig: NextConfig = {
   output: "export",
   basePath: basePath || undefined,
-  assetPrefix: basePath || undefined,
+  assetPrefix,
   trailingSlash: true,
   reactStrictMode: true,
   images: { unoptimized: true },
